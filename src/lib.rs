@@ -152,6 +152,12 @@ fn bjorklund(steps: u8, pulses: u8) -> Vec<bool> {
     let steps = steps as usize;
     let pulses = pulses as usize;
 
+    if pulses == 1 {
+        let mut pattern = vec![false; steps];
+        pattern[0] = true;
+        return pattern;
+    }
+
     if pulses == 0 || pulses == steps {
         // Trivial cases handled by caller
         return Vec::new();
@@ -177,7 +183,7 @@ fn bjorklund(steps: u8, pulses: u8) -> Vec<bool> {
         let num_left = split_idx;
         let num_right = pattern.len() - split_idx;
 
-        if num_right == 0 {
+        if num_right <= 1 {
             break;
         }
 
@@ -194,11 +200,6 @@ fn bjorklund(steps: u8, pulses: u8) -> Vec<bool> {
 
         // Update split index
         split_idx = num_pairs;
-
-        // If we only have one type of group left, we're done
-        if pattern.len() - split_idx <= 1 {
-            break;
-        }
     }
 
     // Flatten the groups into a single pattern
@@ -260,6 +261,15 @@ mod tests {
     fn all_rests() {
         let pattern = euclidean(8, 0, 0);
         assert_eq!(pattern, vec![false; 8]);
+    }
+
+    #[test]
+    fn single_pulse() {
+        let pattern = euclidean(8, 1, 0);
+        assert_eq!(
+            pattern,
+            vec![true, false, false, false, false, false, false, false]
+        );
     }
 
     #[test]
