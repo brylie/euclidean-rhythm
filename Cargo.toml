@@ -1,0 +1,14 @@
+[package]
+name = "euclidean-rhythm"
+version = "0.1.0"
+edition = "2024"
+authors = ["Brylie Christopher Oxley"]
+license = "MIT"
+description = "Generate Euclidean rhythms using Bjorklund's algorithm - musically interesting patterns for percussion and generative music"
+repository = "https://github.com/brylie/euclidean-rhythm"
+documentation = "https://docs.rs/euclidean-rhythm"
+keywords = ["music", "rhythm", "algorithm", "generative", "audio"]
+categories = ["multimedia::audio", "algorithms"]
+readme = "README.md"
+
+[dependencies]
