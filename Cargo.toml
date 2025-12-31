@@ -12,3 +12,10 @@ categories = ["multimedia::audio", "algorithms"]
 readme = "README.md"
 
 [dependencies]
+
+[dev-dependencies]
+criterion = "0.5"
+
+[[bench]]
+name = "euclidean_bench"
+harness = false
